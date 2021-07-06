@@ -1,0 +1,35 @@
+<div class="container">
+    <h1 class="text-center display-4">Todo List</h1>
+
+    <div class="col-2 my-4">
+        Find by user id
+        <input class="form-control text-center" type="number" #userId
+        (keyup) = "findTodoByUserId(userId)">
+    </div>
+
+    <div class="row border border-dark bg-success" id="heading">
+        <!-- <div class="col-3 border border-dark">Id</div> -->
+        <div class="col-3 border border-dark">Title</div>
+        <div class="col-3 border border-dark">User Id</div>
+        <div class="col-3 border border-dark">Completed</div>
+        <div class="col-3 border border-dark">Edit</div>
+    </div>
+    
+
+    <div class="row border border-dark" *ngFor='let todo of todos let i = index'>
+        <!-- <div class="col border border-dark">{{todo.id}}</div> -->
+        <div class="col border border-dark">{{todo.title}}</div>
+        <div class="col border border-dark">{{todo.userId}}</div>
+        <div class="col border border-dark">{{todo.completed}}</div>
+        <div class="col border border-dark">
+            <button class="btn btn-warning m-1">Edit</button> <!-- {{i}} -->
+        </div>
+    </div>
+
+    <!-- TODO -->
+    <div class="text-center">
+        <p *ngIf="!todos.length" style="color: rgb(242, 242, 242);">TODOs not found</p>
+    </div>
+    
+
+</div>
