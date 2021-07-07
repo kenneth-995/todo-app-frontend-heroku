@@ -21,4 +21,26 @@ export class TodoService {
     const url = `${this.base_url}/todos?userId=${id}`;
     return this.htttClient.get<Todo[]>(url);
   }
+
+  getTodoById(id:number) {
+    const url = `${this.base_url}/todos/${id}`;
+    return this.htttClient.get<Todo>(url);
+  }
+
+  createTodo(todo:Todo) {
+    const url = `${this.base_url}/todos/`;
+    return this.htttClient.post<Todo>(url, todo);
+  }
+
+  editTodo(todo:Todo) {
+    const url = `${this.base_url}/todos/${todo.id}`;
+    return this.htttClient.put<Todo>(url, todo);
+  }
+
+  deleteTodo(id:number) {
+    const url = `${this.base_url}/todos/${id}`;
+    return this.htttClient.delete<Todo>(url);
+  }
+
+
 }

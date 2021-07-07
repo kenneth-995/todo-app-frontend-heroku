@@ -1,6 +1,7 @@
 <div class="container">
     <h1 class="text-center display-4">Todo List</h1>
 
+    <!-- TODO: fallo al cambiar el numero con flechita -->
     <div class="col-2 my-4">
         Find by user id
         <input class="form-control text-center" type="number" #userId
@@ -22,8 +23,12 @@
         <div class="col border border-dark">{{todo.userId}}</div>
         <div class="col border border-dark">{{todo.completed}}</div>
         <div class="col border border-dark">
-            <button class="btn btn-warning m-1">Edit</button> <!-- {{i}} -->
+            <a class="btn btn-warning m-1" [routerLink]="['/create-edit', todo.id]">Edit </a>
+            <a class="btn btn-danger m-1" (click)='openModalDelete(todo.id, i)'>Delete</a>
         </div>
+        <!-- <div class="col border border-dark">
+            <a class="btn btn-warning m-1">Delete</a>
+        </div> -->
     </div>
 
     <!-- TODO -->
@@ -33,3 +38,22 @@
     
 
 </div>
+
+<ng-template #modalDelete let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Clinic</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+            (click)="modal.close('Cerrado desde la ventana')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Are you sure? This operation cannot be undone
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No</button>
+          <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
+        </div>
+      </div>
+</ng-template>
