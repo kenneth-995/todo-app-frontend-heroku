@@ -4,5 +4,5 @@ export class User {
     username: string;
     name: number;
     completed: boolean;
-    addressEntity:Address;
+    addressEntity:Address = new Address;
 }

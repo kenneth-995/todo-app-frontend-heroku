@@ -4,7 +4,7 @@
     <form [formGroup] = "todoForm" (submit)="saveForm()">
         <div class="form-group">
             <label for="userId">User Id *</label>
-            <input class="form-control" type="number" id="userId" aria-describedby="userId" placeholder="1" formControlName="userId">
+            <input class="form-control" type="number" id="userId" aria-describedby="userId"  formControlName="userId">
             <small id="userId" class="form-text text-muted">User ID assigned to TODO</small>
             <span class="text-danger"
                 *ngIf="(registerFormControl.id.touched || isSubmitted) && registerFormControl.id.errors?.required">
@@ -15,7 +15,7 @@
           <div class="form-group">
             <label for="title">Title *</label>
             <input class="form-control" type="text"  id="title" aria-describedby="title" placeholder="Some title" formControlName="title">
-            <small class="form-text text-muted" id="userId" >Title of TODO (length<200 characters)</small>
+            <small class="form-text text-muted" id="userId" >Title of TODO length<200 characters</small>
             <span class="text-danger"
                 *ngIf="(registerFormControl.title.touched || isSubmitted) && registerFormControl.title.errors?.required">
                 Title is required

@@ -18,4 +18,8 @@ export class UserService {
     const url = `${this.base_url}/auth/login`;
     return this.httpClient.post(url, formData);
   }
+
+  get getUserId() {
+    return localStorage.getItem('id') || '';
+  }
 }

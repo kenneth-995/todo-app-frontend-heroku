@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
-import { Todo } from 'src/app/models/Todo';
 import { TodoCustom } from 'src/app/models/TodoCustom';
 
 @Injectable({
@@ -15,11 +13,11 @@ export class TodoService {
 
   getAllTodos() {
     const url = `${this.base_url}/todos/`;
-    return this.httpClient.get<Todo[]>(url);
+    return this.httpClient.get(url);
   }
 
-  getAllTodosPagination() {
-    const url = `${this.base_url}/todos/page/`;
+  getTodosPagination(page:number, size:number) {
+    const url = `${this.base_url}/todos/page/?page=${page}&size=${size}`;
     return this.httpClient.get<any>(url);
   }
 
@@ -29,28 +27,28 @@ export class TodoService {
   }
 
   getTodoByUserId(id:number) {
-    const url = `${this.base_url}/todos?userId=${id}/`;
-    return this.httpClient.get<Todo[]>(url);
+    const url = `${this.base_url}/todos/userid/${id}/`;
+    return this.httpClient.get<TodoCustom[]>(url);
   }
 
   getTodoById(id:number) {
     const url = `${this.base_url}/todos/${id}/`;
-    return this.httpClient.get<Todo>(url);
+    return this.httpClient.get<TodoCustom>(url);
   }
-
-  createTodo(todo:Todo) {
+  
+  createTodo(todo:TodoCustom) {
     const url = `${this.base_url}/todos/`;
-    return this.httpClient.post<Todo>(url, todo);
+    return this.httpClient.post<TodoCustom>(url, todo);
   }
 
-  editTodo(todo:Todo) {
+  editTodo(todo:TodoCustom) {
     const url = `${this.base_url}/todos/${todo.id}/`;
-    return this.httpClient.put<Todo>(url, todo);
+    return this.httpClient.put<TodoCustom>(url, todo);
   }
 
   deleteTodo(id:number) {
     const url = `${this.base_url}/todos/${id}/`;
-    return this.httpClient.delete<Todo>(url);
+    return this.httpClient.delete(url);
   }
 
 

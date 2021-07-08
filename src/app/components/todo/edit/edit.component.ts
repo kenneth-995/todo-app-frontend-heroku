@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Todo } from 'src/app/models/Todo';
+import { TodoCustom } from 'src/app/models/TodoCustom';
 import { TodoService } from 'src/app/services/todo.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -15,45 +16,18 @@ export class EditComponent implements OnInit {
 
   private destroy$ = new Subject();
   private id: any = null;
-  private todo: Todo = new Todo;
+  private todo: TodoCustom = new TodoCustom;
   public isSubmitted: boolean = false;
   public isCreate: boolean = false;
 
   public titleTemplate: string = '';
 
 
-  public todoForm = new FormGroup({
-    id: new FormControl(
-      this.todo.id, 
-      [
-        Validators.required,
-        Validators.pattern("^[0-9]*$"),
-        Validators.minLength(1),
-      ]
-    ),
-    userId: new FormControl(
-      this.todo.userId, 
-      [
-        Validators.required,
-        Validators.pattern("^[0-9]*$"),
-      ]
-    ),
-    title: new FormControl(
-      this.todo.title, 
-      [
-        Validators.required,
-        Validators.minLength(1),
-        Validators.maxLength(200),
-      ]),
-    completed: new FormControl(
-      this.todo.completed, 
-      [
-        Validators.required
-      ]),
-  });
+  public todoForm:FormGroup;
 
   constructor(private activateRoute: ActivatedRoute,
-    private todoService: TodoService) { }
+    private todoService: TodoService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
 
@@ -70,20 +44,51 @@ export class EditComponent implements OnInit {
       }  
     });
 
+    this.todoForm = new FormGroup({
+      id: new FormControl(
+        this.todo.id, 
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+          Validators.minLength(1),
+        ]
+      ),
+      userId: new FormControl(
+        this.todo.user.id, 
+        [
+          Validators.required,
+          Validators.pattern("^[0-9]*$"),
+        ]
+      ),
+      title: new FormControl(
+        this.todo.title, 
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(200),
+        ]),
+      completed: new FormControl(
+        this.todo.completed, 
+        [
+          Validators.required
+        ]),
+    });
+
   }
 
+  //CUSTOM TODO
   private getTodo(id:number) {
     this.todoService.getTodoById(id).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:Todo)=> {
+      (res:TodoCustom)=> {
         this.todo = res;
         this.setFormTodo(this.todo);
       }
     );
   }
 
-  private setFormTodo(todo:Todo) {
+  private setFormTodo(todo:TodoCustom) {
     this.todoForm.controls['id'].setValue(todo.id);
-    this.todoForm.controls['userId'].setValue(todo.userId);
+    this.todoForm.controls['userId'].setValue(todo.user.id);
     this.todoForm.controls['title'].setValue(todo.title);
     this.todoForm.controls['completed'].setValue(todo.completed);
   }
@@ -97,23 +102,22 @@ export class EditComponent implements OnInit {
       } else {
         this.editTodo(this.todoForm.value);
       }
-      console.log(this.todoForm.value);
       
     }
     
   }
 
-  private createTodo(todo:Todo) {
+   private createTodo(todo:TodoCustom) {
     this.todoService.createTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:Todo)=> {
+      (res:TodoCustom)=> {
         console.log(res);
       }
     );
   }
 
-  private editTodo(todo:Todo){
+  private editTodo(todo:TodoCustom){
     this.todoService.editTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:Todo)=> {
+      (res:TodoCustom)=> {
         console.log(res);
       }
     );

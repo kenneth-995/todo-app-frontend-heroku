@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from 'src/app/services/user.service';
 import { TodoService } from 'src/app/services/todo.service';
-import { Todo } from 'src/app/models/Todo';
 import { TodoCustom } from 'src/app/models/TodoCustom';
 
-import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -19,79 +17,104 @@ export class ListComponent implements OnInit {
 
   private destroy$ = new Subject();
 
-  public todos: Todo[] = [];
-  public todosTemp: Todo[] = [];
+  public currentUserId: string;
 
   public todoCustom: TodoCustom[] = [];
+  public todoCustomTemp: TodoCustom[] = [];
+  
+  public numberPages: Array<number>;//Array to loop for in html template and show pagination
 
   public isPagination: boolean = false;
+  public currentPage: number = 0;
+  private lastPage: number = 0;
+  private sizePage: number = 10;
 
   constructor(private todoService: TodoService, 
-    private modalService: NgbModal,
-    private httpClient: HttpClient) { }
+    private userService: UserService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.getAllTodosCustom();
-  }
-
-  private getAllTodos() {
-    this.todoService.getAllTodos().pipe(takeUntil(this.destroy$)).subscribe(
-      (res:Todo[])=> {
-        this.todos = res;
-        this.todosTemp = res;
-      }
-    );
+    this.setCurrentuserId();
   }
 
   private getAllTodosCustom() {
     this.todoService.getAllTodosCustom().pipe(takeUntil(this.destroy$)).subscribe(
       (res:TodoCustom[])=> {
-        /* this.todos = res;
-        this.todosTemp = res; */
         this.todoCustom = res;
-        console.log(res)
+        this.todoCustomTemp = res;
       }
     );
   }
-
-
-  private getAllTodosCustomPagination() {
-    this.httpClient.get<HttpResponse<any>>('http://localhost:8080/api/todos/page/').subscribe(
-      (res:HttpResponse<any>)=>console.log(res.headers.keys)
-    );
-  }
-
 
   public findTodoByUserId(userId:string){
 
     if (userId.length === 0 || Number(userId) === 0) {
-      this.todos = this.todosTemp;
+      this.todoCustom = this.todoCustomTemp;
     }
 
     if (! this.checkIsId(userId) ) {
+      this.todoCustom = this.todoCustomTemp;
       return;
     } 
 
-
     this.todoService.getTodoByUserId(Number(userId)).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:Todo[])=> {
-        this.todos = res;
+      (res:any)=> {
+        console.log(res)
+        this.todoCustom = res;
+        this.todoCustomTemp = res;
+      },
+      (error) => {
+        if (error["status"] == 404){
+          this.todoCustom = [];//todos not fount
+        }
+        
       }
     );
   }
 
-  public deleteTodo(id:number, idx:number){
-    this.todoService.deleteTodo(id).pipe(takeUntil(this.destroy$)).subscribe(
-      ()=> {
-        console.log('deleted');
-        this.todos.splice(idx, 1);
+  private getTodosPagination(page:number, size:number) {
+    this.todoService.getTodosPagination(page, size).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:any)=> {
+        this.todoCustom = res['content'];
+        this.todoCustomTemp = res['content'];
+      },
+      (error) => {
+        if (error["status"] == 404){
+          this.todoCustom = [];
+        }
       }
     );
   }
 
-  private checkIsId(param:string):boolean {
-    const reg = new RegExp('^[0-9]+$');
-    return reg.test(param) && Number(param) > 0 ;
+  private getFirstTimeTodosPagination() {
+    this.todoService.getTodosPagination(0, this.sizePage).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:any)=> {
+        this.todoCustom = res['content'];
+        this.todoCustomTemp = res['content'];
+        this.lastPage= res['totalPages']-1;
+        this.numberPages = new Array<number>(res['totalPages']);//Array to be able to do for loop in html template        
+      },
+      (error) => {
+        if (error["status"] == 404){
+          this.todoCustom = [];
+        }
+        
+      }
+    );
+  }
+
+  private getTodoItemsPagination(page:number= this.lastPage) {
+    this.currentPage= page;
+    this.getTodosPagination(page, this.sizePage);
+  }
+
+  public showPagination() {
+    if (!this.isPagination){
+      this.getFirstTimeTodosPagination();
+    } else {
+      this.getAllTodosCustom();
+    }
   }
 
   public openModalDelete(id:number, idx:number) {
@@ -106,11 +129,24 @@ export class ListComponent implements OnInit {
     );
   }
 
-  public activePagination(value: boolean) {
-    console.log(value)
-    this.getAllTodosCustomPagination()
+  private deleteTodo(id:number, idx:number){
+    this.todoService.deleteTodo(id).pipe(takeUntil(this.destroy$)).subscribe(
+      ()=> {
+        this.todoCustom.splice(idx, 1);
+        this.todoCustomTemp.splice(idx, 1);
+      }
+    );
   }
 
+  private checkIsId(param:string):boolean {
+    const reg = new RegExp('^[0-9]+$');
+    return reg.test(param) && Number(param) > 0 ;
+  }
+
+  private setCurrentuserId(){
+    this.currentUserId= this.userService.getUserId;
+  }
+  
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
