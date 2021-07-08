@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-/* import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators'; */
 
 @Component({
   selector: 'app-root',
@@ -10,16 +8,7 @@ import { filter } from 'rxjs/operators'; */
 export class AppComponent {
   title = 'ohmycodetodofront';
 
-  /* headerFooter: boolean = false; */
+  constructor() { }
 
-  constructor(/* private router: Router */) { }
-
-  ngOnInit(): void {
-    /* this.router.events.pipe(filter((event) => event instanceof NavigationEnd))
-    .subscribe((event: NavigationEnd) => {
-      this.headerFooter = (event.url !== '/login')
-      
-    }); */
-
-  }
+  ngOnInit(): void { }
 }

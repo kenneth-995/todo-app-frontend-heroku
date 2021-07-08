@@ -99,12 +99,11 @@ export class ListComponent implements OnInit {
         if (error["status"] == 404){
           this.todoCustom = [];
         }
-        
       }
     );
   }
 
-  private getTodoItemsPagination(page:number= this.lastPage) {
+  public getTodoItemsPagination(page:number= this.lastPage) {
     this.currentPage= page;
     this.getTodosPagination(page, this.sizePage);
   }

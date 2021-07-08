@@ -13,12 +13,12 @@ export class TodoService {
 
   getAllTodos() {
     const url = `${this.base_url}/todos/`;
-    return this.httpClient.get(url);
+    return this.httpClient.get<TodoCustom[]>(url);
   }
 
   getTodosPagination(page:number, size:number) {
     const url = `${this.base_url}/todos/page/?page=${page}&size=${size}`;
-    return this.httpClient.get<any>(url);
+    return this.httpClient.get<TodoCustom[]>(url);
   }
 
   getAllTodosCustom() {

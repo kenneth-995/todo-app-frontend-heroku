@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
         );
     } else {
       this.messageForm = "all fields ir required";
-      console.log('all fields ir required');
     }
   }
 
