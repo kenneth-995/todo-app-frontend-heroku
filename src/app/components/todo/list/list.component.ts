@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { isEmpty, takeUntil } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TodoService } from 'src/app/services/todo.service';
 import { Todo } from 'src/app/models/Todo';
+import { TodoCustom } from 'src/app/models/TodoCustom';
+
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -19,10 +22,16 @@ export class ListComponent implements OnInit {
   public todos: Todo[] = [];
   public todosTemp: Todo[] = [];
 
-  constructor(private todoService: TodoService, private modalService: NgbModal,) { }
+  public todoCustom: TodoCustom[] = [];
+
+  public isPagination: boolean = false;
+
+  constructor(private todoService: TodoService, 
+    private modalService: NgbModal,
+    private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.getAllTodos();
+    this.getAllTodosCustom();
   }
 
   private getAllTodos() {
@@ -33,6 +42,25 @@ export class ListComponent implements OnInit {
       }
     );
   }
+
+  private getAllTodosCustom() {
+    this.todoService.getAllTodosCustom().pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom[])=> {
+        /* this.todos = res;
+        this.todosTemp = res; */
+        this.todoCustom = res;
+        console.log(res)
+      }
+    );
+  }
+
+
+  private getAllTodosCustomPagination() {
+    this.httpClient.get<HttpResponse<any>>('http://localhost:8080/api/todos/page/').subscribe(
+      (res:HttpResponse<any>)=>console.log(res.headers.keys)
+    );
+  }
+
 
   public findTodoByUserId(userId:string){
 
@@ -76,6 +104,11 @@ export class ListComponent implements OnInit {
         }
       }
     );
+  }
+
+  public activePagination(value: boolean) {
+    console.log(value)
+    this.getAllTodosCustomPagination()
   }
 
   ngOnDestroy(): void {

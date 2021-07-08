@@ -1,15 +1,32 @@
-<div class="container">
+<div class="container mb-5">
     <h1 class="text-center display-4">Todo List</h1>
 
     <!-- TODO: fallo al cambiar el numero con flechita -->
-    <div class="col-2 my-4">
-        Find by user id
-        <input class="form-control text-center" type="number" #userId
-        (keyup) = "findTodoByUserId(userId)">
-    </div>
+    <div class="row">
+        <div class="col-2 my-4">
+            Find by user id
+            <input class="form-control text-center" type="number" #userId
+            (keyup) = "findTodoByUserId(userId)">
+        </div>
 
-    <div class="row border border-dark bg-success" id="heading">
-        <!-- <div class="col-3 border border-dark">Id</div> -->
+    <div class="form-check form-switch">
+    <input
+      #showPag
+      class="form-check-input"
+      type="checkbox"
+      id="flexSwitchCheckChecked"
+      [checked]="true"
+      [(ngModel)]="isPagination"
+      (click)="activePagination(showPag.value)"
+    />
+    <label class="form-check-label" for="flexSwitchCheckChecked"
+      >Check the switch to activate paging</label>
+  </div>
+
+    </div>
+    
+
+    <!-- <div class="row border border-dark bg-success" id="heading">
         <div class="col-3 border border-dark">Title</div>
         <div class="col-3 border border-dark">User Id</div>
         <div class="col-3 border border-dark">Completed</div>
@@ -18,26 +35,54 @@
     
 
     <div class="row border border-dark" *ngFor='let todo of todos let i = index'>
-        <!-- <div class="col border border-dark">{{todo.id}}</div> -->
         <div class="col border border-dark">{{todo.title}}</div>
         <div class="col border border-dark">{{todo.userId}}</div>
-        <div class="col border border-dark">{{todo.completed}}</div>
+        <div class="col border border-dark">{{todo.completed === true ? "Completed": "Not Completed"}}</div>
         <div class="col border border-dark">
             <a class="btn btn-warning m-1" [routerLink]="['/create-edit', todo.id]">Edit </a>
             <a class="btn btn-danger m-1" (click)='openModalDelete(todo.id, i)'>Delete</a>
         </div>
-        <!-- <div class="col border border-dark">
-            <a class="btn btn-warning m-1">Delete</a>
-        </div> -->
-    </div>
+    </div> -->
 
-    <!-- TODO -->
-    <div class="text-center">
-        <p *ngIf="!todos.length" style="color: rgb(242, 242, 242);">TODOs not found</p>
+    <div class="row border border-dark bg-success" id="heading">
+        <div class="col-2 border border-dark">Title</div>
+        <div class="col-2 border border-dark">Username</div>
+        <div class="col-2 border border-dark">User's city</div>
+        <div class="col-2 border border-dark">User Street</div>
+        <div class="col-2 border border-dark">Completed</div>
+        <div class="col-2 border border-dark">Edit</div>
     </div>
     
 
+    <div class="row border border-dark" *ngFor='let todo of todoCustom let i = index'>
+        <div class="col border border-dark">{{todo.title}}</div>
+        <div class="col border border-dark">{{todo.user.username}}</div>
+        <div class="col border border-dark">{{todo.user.addressEntity.city}}</div>
+        <div class="col border border-dark">{{todo.user.addressEntity.street}}</div>
+        <div class="col border border-dark">{{todo.completed === true ? "Completed": "Not Completed"}}</div>
+        <div class="col border border-dark">
+            <a class="btn btn-warning m-1" [routerLink]="['/create-edit', todo.id]">Edit </a>
+            <a class="btn btn-danger m-1" (click)='openModalDelete(todo.id, i)'>Delete</a>
+        </div>
+    </div>
+
+    <nav aria-label="Page navigation" *ngIf="isPagination">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+
+
+    <div class="text-center">
+        <p *ngIf="!todoCustom.length">TODOs not found</p>
+    </div>
+    
 </div>
+  
 
 <ng-template #modalDelete let-modal>
     <div class="modal-content">

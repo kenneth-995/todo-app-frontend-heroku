@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'https://jsonplaceholder.typicode.com',
+  CUSTOM_API_BASE_URL: 'http://localhost:8080/api',
+  MOOK_API_BASE_URL: 'https://jsonplaceholder.typicode.com',
 };
 
 /*
