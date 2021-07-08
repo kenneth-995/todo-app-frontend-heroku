@@ -3,14 +3,17 @@
 
     <form [formGroup] = "todoForm" (submit)="saveForm()">
         <div class="form-group">
-            <label for="userId">User Id *</label>
-            <input class="form-control" type="number" id="userId" aria-describedby="userId"  formControlName="userId">
+          <label for="userId">User Id *</label>
+          <select class="form-control" formControlName="userId" (change)="onChangeSelect($event.target.value)">
+            <option [value]="null" disabled>Select User</option>
+            <option *ngFor="let user of users" value="{{user.id}}">(id: {{user.id}}) {{user.name}}</option>
+          </select>
             <small id="userId" class="form-text text-muted">User ID assigned to TODO</small>
             <span class="text-danger"
                 *ngIf="(registerFormControl.id.touched || isSubmitted) && registerFormControl.id.errors?.required">
                 User ID is required
             </span>
-          </div>
+        </div>
 
           <div class="form-group">
             <label for="title">Title *</label>
@@ -35,7 +38,6 @@
             <button class="btn btn-primary" type="submit" [disabled]="!todoForm.valid">Submit</button>
           </div>
           
-
     </form>
 
 

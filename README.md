@@ -1,27 +1,23 @@
 # Ohmycodetodofront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
+The challenge is to create an application to manage user task lists (TODOs).
+This application will have two parts: Frontend (Angular) and Backend (Java Spring).
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run at the root of the project `npm install` to install the necessary dependencies in the local node_modules folder.
 
-## Code scaffolding
+Once we have the dependencies correctly installed, we can run the application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run at the root of the project `ng serve -o` for a dev server. It will open the application directly in the browser that you have installed.
 
-## Build
+## Application testing
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+To access the application, you must log in with a valid username and password.
 
-## Running unit tests
+You can find the users in the data.sql file of the Spring Boot application (proofTodoBackend\src\main\resources\data.sql)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+All users have password = 'password'
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

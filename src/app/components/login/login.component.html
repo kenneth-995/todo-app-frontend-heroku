@@ -14,6 +14,7 @@
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg ">login</button>
                         </div>
+                        <div *ngIf="messageForm" class="error">{{messageForm}}</div>
                     </form>
                 </div>
             </div>

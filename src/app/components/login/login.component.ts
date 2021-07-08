@@ -17,15 +17,15 @@ export class LoginComponent implements OnInit {
 
   private destroy$ = new Subject();
 
+  public loginForm: FormGroup;
 
-  public loginForm = new FormGroup({
-    username: new FormControl('jhon',[Validators.required]),
-    password: new FormControl('password',[Validators.required])
-  });
-
+  public messageForm: string = '';
 
   ngOnInit(): void {
-
+    this.loginForm = new FormGroup({
+      username: new FormControl('jhon',[Validators.required]),
+      password: new FormControl('password',[Validators.required])
+    });
   }
 
   public login() {
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('id', res['id']);
           console.log(res)
           this.router.navigateByUrl('/home');
-        
           },
           (error) => {
             if (error["status"] == 401){
@@ -48,8 +47,8 @@ export class LoginComponent implements OnInit {
           }
         );
     } else {
-      console.log('form no valid');
-
+      this.messageForm = "all fields ir required";
+      console.log('all fields ir required');
     }
   }
 

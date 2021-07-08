@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/core/interceptors/auth.interceptor'
 import { ListComponent } from './components/todo/list/list.component';
 import { HomeComponent } from './components/todo/home/home.component';
-import { CreateComponent } from './components/todo/create/create.component';
 import { EditComponent } from './components/todo/edit/edit.component';
 import { HeaderComponent } from 'src/app/shared-module/header/header.component';
 import { LoginComponent } from './components/login/login.component'
@@ -19,7 +18,6 @@ import { LoginComponent } from './components/login/login.component'
     AppComponent,
     ListComponent,
     HomeComponent,
-    CreateComponent,
     EditComponent,
     HeaderComponent,
     LoginComponent
