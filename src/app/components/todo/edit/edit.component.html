@@ -4,7 +4,7 @@
     <form [formGroup] = "todoForm" (submit)="saveForm()">
         <div class="form-group">
           <label for="userId">User Id *</label>
-          <select class="form-control" formControlName="userId" (change)="onChangeSelect($event.target.value)">
+          <select class="form-control" formControlName="userId" (change)="onChangeSelectUser($event.target.value)">
             <option [value]="null" disabled>Select User</option>
             <option *ngFor="let user of users" value="{{user.id}}">(id: {{user.id}}) {{user.name}}</option>
           </select>
@@ -26,7 +26,7 @@
           </div>
 
           <div class="form-group">
-            <label for="isCompleted">Completed</label>
+            <label for="isCompleted">Completed *</label>
             <select class="form-select"  id="isCompleted" aria-describedby="isCompleted" formControlName="completed">
                 <option selected value="false">Not completed</option>
                 <option value="true">Completed</option>
@@ -37,8 +37,21 @@
           <div class="my-3">
             <button class="btn btn-primary" type="submit" [disabled]="!todoForm.valid">Submit</button>
           </div>
-          
     </form>
-
-
 </div>
+
+<ng-template #modalCreatedEdited let-modal>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{titleTemplate}} successfully</h5>
+    </div>
+    <div class="modal-body">
+      {{messageCreateEdited}}
+      <!-- Do you want to create another? -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('0')">No, go to list</button>
+    </div>
+  </div>
+</ng-template>
