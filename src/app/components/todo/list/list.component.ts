@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   @ViewChild("modalDelete", { static: false }) modalDelete: TemplateRef<any>;
 
   private destroy$ = new Subject();
+  public errorMessage: string = '';
 
   public userIdLogged: number;
 
@@ -46,14 +47,17 @@ export class ListComponent implements OnInit {
     this.todoService.getAllTodosCustom().pipe(takeUntil(this.destroy$)).subscribe(
       (res:TodoCustom[])=> {
         this.todoCustom = res;
+        this.errorMessage = "";
       },
       (error) => {
         console.log(error)
         if (error["status"] == 404){
           this.todoCustom = [];
+        } else if (error["status"] == 0){
+          this.errorMessage = "Service not available, please try again";
         } else {
-          //show message in template
-        }
+          this.errorMessage = "Something went wrong, try again or contact the administrator";
+        } 
       }
     );
   }
@@ -61,16 +65,17 @@ export class ListComponent implements OnInit {
   private getTodosByUserId(id: number) {
     this.todoService.getTodoByUserId(Number(id)).pipe(takeUntil(this.destroy$)).subscribe(
       (res:TodoCustom[])=> {
-        console.log(res)
         this.todoCustom = res;
+        this.errorMessage = "";
       },
       (error) => {
         if (error["status"] == 404){
           this.todoCustom = [];
-        }else {
-          //TODO: show message in template
-        }
-        
+        } else if (error["status"] == 0){
+          this.errorMessage = "Service not available, please try again";
+        } else {
+          this.errorMessage = "Something went wrong, try again or contact the administrator";
+        } 
       }
     );
   }
@@ -83,14 +88,17 @@ export class ListComponent implements OnInit {
         this.todoCustom = res['content'] as TodoCustom[];
         this.lastPage= res['totalPages']-1 as number;
         this.numberPages = new Array<number>(res['totalPages'] as number);//Array to be able to do for loop in html template   
+        this.errorMessage = "";
       },
       (error) => {
         console.log(error)
         if (error["status"] == 404){
           this.todoCustom = [];
+        } else if (error["status"] == 0){
+          this.errorMessage = "Service not available, please try again";
         } else {
-          //TODO: show message in template
-        }
+          this.errorMessage = "Something went wrong, try again or contact the administrator";
+        } 
       }
     );
   }
@@ -116,9 +124,7 @@ export class ListComponent implements OnInit {
   public openModalDelete(id: number, idx: number) {
     this.modalService.open(this.modalDelete).result.then(
       r => {
-        if (r === '1') { 
-          this.deleteTodo(id, idx)
-        } else { /* DISCARD DELETE */ }
+        if (r === '1') this.deleteTodo(id, idx)
       }
     );
   }
@@ -127,10 +133,19 @@ export class ListComponent implements OnInit {
     this.todoService.deleteTodo(id).pipe(takeUntil(this.destroy$)).subscribe(
       ()=> {
         this.todoCustom.splice(idx, 1);
+        this.errorMessage = "";
       },
       (error) => {
-        console.log(error) //show message in template
+        if (error["status"] == 401){
+          this.errorMessage = "You can't delete all from other users";
+        } else if (error["status"] == 403){ // It shouldn't happen unless the user modifies the dom
+          this.errorMessage = "You can't delete all from other users";
+        } else {
+          this.errorMessage = "Service not available, please try again";
+        }
       }
+
+      
     );
   }
 
