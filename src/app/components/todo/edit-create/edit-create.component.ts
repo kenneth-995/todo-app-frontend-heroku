@@ -11,10 +11,10 @@ import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  templateUrl: './edit-create.component.html',
+  styleUrls: ['./edit-create.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditCreateComponent implements OnInit {
   @ViewChild("modalCreatedEdited", { static: false }) modalCreatedEdited: TemplateRef<any>;
 
   private destroy$ = new Subject();

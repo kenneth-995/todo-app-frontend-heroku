@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
 import { HomeComponent } from 'src/app/components/todo/home/home.component';
 import { ListComponent } from 'src/app/components/todo/list/list.component'
-import { EditComponent } from './components/todo/edit/edit.component';
+import { EditCreateComponent } from './components/todo/edit-create/edit-create.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
@@ -20,9 +20,9 @@ const routes: Routes = [
   { 
     canActivate: [AuthGuard],
     path: 'create-edit/:id', 
-    component: EditComponent },
+    component: EditCreateComponent },
 
-  { path: 'create-edit', component: EditComponent },
+  { path: 'create-edit', component: EditCreateComponent },
 
 ];
 
