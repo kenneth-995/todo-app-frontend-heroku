@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/User';
-import {LoginDto} from 'src/app/models/LoginDto';
+import { LoginDto } from 'src/app/models/LoginDto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,16 @@ export class UserService {
     return this.httpClient.get<User[]>(url);
   }
 
-  get getUserId() {
-    return localStorage.getItem('id') || '';
+  public getUserById(id: number) {
+    const url = `${this.base_url}/user/${id}`;
+    return this.httpClient.get<User>(url);
+  }
+
+  get getUserIdLogged() {
+    return Number(localStorage.getItem('id')) || 0;
+  }
+
+  public checkHasPermissionModidy(ownerId: number, userIdLogged: number): boolean {
+    return ownerId === userIdLogged;
   }
 }

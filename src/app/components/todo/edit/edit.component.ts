@@ -19,15 +19,16 @@ export class EditComponent implements OnInit {
 
   private destroy$ = new Subject();
   public titleTemplate: string = '';
-  public messageCreateEdited: string = '';
-  private id: any = null; //id todo pass by url
+  public messageModalTemplate: string = '';
+  private paramUrlId: number = 0;
 
   private todo: TodoCustom = new TodoCustom;
   public isSubmitted: boolean = false;
   public isCreate: boolean = false;
 
-  public todoForm: FormGroup;
+  public todoForm: FormGroup = new FormGroup({});
 
+  public userIdLogged: number = 0;
   public users: User[] = [];
 
   constructor(private activateRoute: ActivatedRoute,
@@ -37,69 +38,29 @@ export class EditComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userIdLogged= this.userService.getUserIdLogged;
+    this.getParamUrl();
+    this.inicializeForm();
+  }
 
+  private getParamUrl() {
     this.activateRoute.paramMap.subscribe( param => {
-      this.id = param.get('id');
-      
-      if (this.id) {
-        this.getTodo(this.id);
+          
+      this.paramUrlId = Number(param.get('id'));
+
+      if (this.paramUrlId > 0) {
+        this.getUser();
+        this.getTodo(this.paramUrlId);
         this.titleTemplate = "Edit TODO"
-        
-      } else {
+
+      } else if (this.paramUrlId === 0) {
+        this.getUsers();
         this.titleTemplate = "Create TODO"
         this.isCreate= true;
-      }  
+
+      } else this.router.navigateByUrl('/list');
+            
     });
-
-    this.inicializeForm();
-    this.getUsers();
-    
-  }
-
-  private getTodo(id:number) {
-    this.todoService.getTodoById(id).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:TodoCustom)=> {
-        this.todo = res;
-        this.setFormTodo(this.todo);
-      }
-    );
-  }
-
-  private setFormTodo(todo:TodoCustom) {
-    this.todoForm.controls['id'].setValue(todo.id);
-    this.todoForm.controls['userId'].setValue(todo.user.id);
-    this.todoForm.controls['title'].setValue(todo.title);
-    this.todoForm.controls['completed'].setValue(todo.completed);
-  }
-
-  public saveForm() {
-    if(this.todoForm.valid) { //todo: check user id > 0
-
-      if (this.isCreate) {
-        this.createTodo(this.todoForm.value);
-        
-      } else {
-        this.editTodo(this.todoForm.value);
-      }
-      this.inicializeForm();
-    }
-  }
-
-  private createTodo(todo:TodoCustom) {
-    this.todoService.createTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:TodoCustom)=> {
-        console.log(res);
-        this.openModalCreatedEdited('Do you want to create another?');
-      }
-    );
-  }
-
-  private editTodo(todo:TodoCustom){
-    this.todoService.editTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:TodoCustom)=> {
-        this.openModalCreatedEdited('Do you want to stay here?');
-      }
-    );
   }
 
   private inicializeForm() {
@@ -124,7 +85,7 @@ export class EditComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(1),
-          Validators.maxLength(200),
+          Validators.maxLength(199),
         ]),
       completed: new FormControl(
         this.todo.completed, 
@@ -132,12 +93,19 @@ export class EditComponent implements OnInit {
           Validators.required
         ]),
     });
-
-    if(!this.isCreate) this.todoForm.controls['userId'].disable(); 
   }
 
-  get registerFormControl() {
-    return this.todoForm.controls;
+  private getTodo(id:number) {
+    this.todoService.getTodoById(id).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)=> {
+        this.todo = res;
+        if (this.userService.checkHasPermissionModidy(this.todo.user.id, this.userIdLogged)) {
+          this.setFormTodo(this.todo);
+        } else this.router.navigateByUrl('/list') // FORBIDDEN
+        
+      }, 
+      (error) => this.router.navigateByUrl('/list')
+    );
   }
 
   private getUsers() {
@@ -146,19 +114,77 @@ export class EditComponent implements OnInit {
     );
   }
 
-  public onChangeSelectUser(value:any){
-    console.log(value)
-    this.todoForm.controls['userId'].setValue(value);
+  private getUser() {
+    this.userService.getUserById(this.userIdLogged).pipe(takeUntil(this.destroy$)).subscribe(
+      (res: User)=> this.users.push(res)
+    );
+  }
+
+  private setFormTodo(todo:TodoCustom) {
+    this.todoForm.controls['id'].setValue(todo.id);
+    this.todoForm.controls['userId'].setValue(todo.user.id);
+    this.todoForm.controls['title'].setValue(todo.title);
+    this.todoForm.controls['completed'].setValue(todo.completed);
+  }
+
+  public saveForm() {
+    this.isSubmitted = true;
+    if(this.todoForm.valid) {
+      if (this.isCreate) {
+        this.createTodo(this.todoForm.value);
+        
+      } else {
+        this.editTodo(this.todoForm.value);
+      }
+    }
+  }
+
+  private createTodo(todo:TodoCustom) {
+    this.todoService.createTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)=> {
+        this.todo = res;
+        this.openModalCreatedEdited('Do you want to create another?');
+      }
+    );
+  }
+
+  private editTodo(todo:TodoCustom){
+    console.log(todo)
+    this.todoService.editTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)=> {
+        this.todo = res;
+        this.openModalCreatedEdited('Do you want to stay here?');
+      },
+      (error) => {
+        console.log(error)
+        if (error["status"] == 403){
+          this.router.navigateByUrl('/list');
+        } else {
+          console.log(error)
+        }
+      }
+    );
   }
 
   public openModalCreatedEdited(msg: string) {
-    this.messageCreateEdited = msg;
+    this.messageModalTemplate = msg;
     this.modalService.open(this.modalCreatedEdited).result.then(
       r => {
         if (r === '0') this.router.navigateByUrl('/list');
-        else { /*Stay here*/ }
+        else { 
+          this.setFormTodo(new TodoCustom);
+          this.isSubmitted = false;
+        }
       }
     );
+  }
+
+  public onChangeSelectUser(value:any){
+    this.todoForm.controls['userId'].setValue(value);
+  }
+
+  get registerFormControl() {
+    return this.todoForm.controls;
   }
 
   ngOnDestroy(): void {

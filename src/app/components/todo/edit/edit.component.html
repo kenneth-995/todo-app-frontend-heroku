@@ -5,8 +5,8 @@
         <div class="form-group">
           <label for="userId">User Id *</label>
           <select class="form-control" formControlName="userId" (change)="onChangeSelectUser($event.target.value)">
-            <option [value]="null" disabled>Select User</option>
-            <option *ngFor="let user of users" value="{{user.id}}">(id: {{user.id}}) {{user.name}}</option>
+            <option [value]="" disabled>Select User</option>
+            <option *ngFor="let user of users" value="{{user.id}}">{{user.id}} {{user.name}} ({{user.addressEntity.city}})</option>
           </select>
             <small id="userId" class="form-text text-muted">User ID assigned to TODO</small>
             <span class="text-danger"
@@ -46,7 +46,7 @@
       <h5 class="modal-title">{{titleTemplate}} successfully</h5>
     </div>
     <div class="modal-body">
-      {{messageCreateEdited}}
+      {{messageModalTemplate}}
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" (click)="modal.close('1')">Yes</button>

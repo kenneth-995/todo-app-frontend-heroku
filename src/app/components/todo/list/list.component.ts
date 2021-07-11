@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/services/user.service';
 import { TodoService } from 'src/app/services/todo.service';
 import { TodoCustom } from 'src/app/models/TodoCustom';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -17,133 +18,139 @@ export class ListComponent implements OnInit {
 
   private destroy$ = new Subject();
 
-  public currentUserId: string;
+  public userIdLogged: number;
 
   public todoCustom: TodoCustom[] = [];
   public todoCustomTemp: TodoCustom[] = [];
   
   public numberPages: Array<number>;//Array to loop for in html template and show pagination
-
   public isPagination: boolean = false;
-  public currentPage: number = 0;
+  private firstPage: number = 0;
   private lastPage: number = 0;
+  public currentPage: number = 0;
   private sizePage: number = 10;
+
+  public formUserId : FormGroup;
 
   constructor(private todoService: TodoService, 
     private userService: UserService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getAllTodosCustom();
-    this.setCurrentuserId();
+    this.userIdLogged= this.userService.getUserIdLogged;
+    this.getAllTodosList();
+    this.inicializeFormUserId();
   }
 
-  private getAllTodosCustom() {
+  private getAllTodosList() {
     this.todoService.getAllTodosCustom().pipe(takeUntil(this.destroy$)).subscribe(
       (res:TodoCustom[])=> {
         this.todoCustom = res;
-        this.todoCustomTemp = res;
+      },
+      (error) => {
+        console.log(error)
+        if (error["status"] == 404){
+          this.todoCustom = [];
+        } else {
+          //show message in template
+        }
       }
     );
   }
 
-  public findTodoByUserId(userId:string){
-
-    if (userId.length === 0 || Number(userId) === 0) {
-      this.todoCustom = this.todoCustomTemp;
-    }
-
-    if (! this.checkIsId(userId) ) {
-      this.todoCustom = this.todoCustomTemp;
-      return;
-    } 
-
-    this.todoService.getTodoByUserId(Number(userId)).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:any)=> {
+  private getTodosByUserId(id: number) {
+    this.todoService.getTodoByUserId(Number(id)).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom[])=> {
         console.log(res)
         this.todoCustom = res;
-        this.todoCustomTemp = res;
       },
       (error) => {
         if (error["status"] == 404){
-          this.todoCustom = [];//todos not fount
+          this.todoCustom = [];
+        }else {
+          //TODO: show message in template
         }
         
       }
     );
   }
 
-  private getTodosPagination(page:number, size:number) {
+  private getTodosPage(page:number, size:number = 10) {
+    
     this.todoService.getTodosPagination(page, size).pipe(takeUntil(this.destroy$)).subscribe(
       (res:any)=> {
-        this.todoCustom = res['content'];
-        this.todoCustomTemp = res['content'];
+        this.currentPage= page;
+        this.todoCustom = res['content'] as TodoCustom[];
+        this.lastPage= res['totalPages']-1 as number;
+        this.numberPages = new Array<number>(res['totalPages'] as number);//Array to be able to do for loop in html template   
       },
       (error) => {
+        console.log(error)
         if (error["status"] == 404){
           this.todoCustom = [];
+        } else {
+          //TODO: show message in template
         }
       }
     );
   }
 
-  private getFirstTimeTodosPagination() {
-    this.todoService.getTodosPagination(0, this.sizePage).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:any)=> {
-        this.todoCustom = res['content'];
-        this.todoCustomTemp = res['content'];
-        this.lastPage= res['totalPages']-1;
-        this.numberPages = new Array<number>(res['totalPages']);//Array to be able to do for loop in html template        
-      },
-      (error) => {
-        if (error["status"] == 404){
-          this.todoCustom = [];
-        }
-      }
-    );
+  public showPaginationAndGetFirstPage() {
+    if ( !this.isPagination ) {
+      this.formUserId.controls['id'].setValue(null);
+      this.getFirstPage();
+    } 
+    else this.getAllTodosList();
   }
 
-  public getTodoItemsPagination(page:number= this.lastPage) {
-    this.currentPage= page;
-    this.getTodosPagination(page, this.sizePage);
+  public getFirstPage() {
+    this.currentPage =this.firstPage; 
+    this.getTodosPage(this.firstPage, this.sizePage);
   }
 
-  public showPagination() {
-    if (!this.isPagination){
-      this.getFirstTimeTodosPagination();
-    } else {
-      this.getAllTodosCustom();
-    }
+  public getLastPage() {
+    this.currentPage =this.lastPage;
+    this.getTodosPage(this.lastPage, this.sizePage);
   }
 
-  public openModalDelete(id:number, idx:number) {
+  public openModalDelete(id: number, idx: number) {
     this.modalService.open(this.modalDelete).result.then(
       r => {
         if (r === '1') { 
           this.deleteTodo(id, idx)
-        } else {
-          //DISCARD DELETE
-        }
+        } else { /* DISCARD DELETE */ }
       }
     );
   }
 
-  private deleteTodo(id:number, idx:number){
+  private deleteTodo(id: number, idx: number){
     this.todoService.deleteTodo(id).pipe(takeUntil(this.destroy$)).subscribe(
       ()=> {
         this.todoCustom.splice(idx, 1);
-        this.todoCustomTemp.splice(idx, 1);
+      },
+      (error) => {
+        console.log(error) //show message in template
       }
     );
   }
 
-  private checkIsId(param:string):boolean {
-    const reg = new RegExp('^[0-9]+$');
-    return reg.test(param) && Number(param) > 0 ;
-  }
+  private inicializeFormUserId() {
+    this.formUserId = new FormGroup({
+      id: new FormControl()
+    });
 
-  private setCurrentuserId(){
-    this.currentUserId= this.userService.getUserId;
+    this.formUserId.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(
+      (field)=> {
+        const id = this.formUserId.controls['id'].value
+        const isGoodId =  Number(id) && Number(id) > 0;
+        if (isGoodId) {
+          this.isPagination = false;
+          this.getTodosByUserId(id);
+        } else {
+          this.getAllTodosList();
+        }
+      }
+    );
   }
   
   ngOnDestroy(): void {
