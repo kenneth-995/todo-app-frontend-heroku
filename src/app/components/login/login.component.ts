@@ -38,11 +38,14 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('username', res['username']);
           localStorage.setItem('id', res['id']);
           console.log(res)
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/list');
           },
           (error) => {
+            console.log(error)
             if (error["status"] == 401){
-              console.log("Username or password do not match");
+              this.messageForm = "Invalid login or password";
+            } else if (error["status"] == 0){
+              this.messageForm = "Service not available, please try again";
             }
           }
         );

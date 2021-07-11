@@ -3,7 +3,7 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="text-center mb-5">Loginn</h1>
+                    <h1 class="text-center mb-5">Login</h1>
                     <form [formGroup]="loginForm" (submit)="login()" >
                         <div class="form-group my-3">
                             <input type="text" class="form-control" placeholder="username" formControlName="username">
@@ -12,9 +12,9 @@
                             <input type="password" class="form-control" placeholder="password" formControlName="password">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg ">login</button>
+                            <button type="submit" class="btn btn-primary btn-lg block">Sign in</button>
                         </div>
-                        <div *ngIf="messageForm" class="error">{{messageForm}}</div>
+                        <div class="error mt-2" *ngIf="messageForm" >{{messageForm}}</div>
                     </form>
                 </div>
             </div>

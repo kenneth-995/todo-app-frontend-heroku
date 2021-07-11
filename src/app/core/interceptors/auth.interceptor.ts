@@ -27,6 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (error.status == 401) {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('username');
+        localStorage.removeItem('id');
         this.route.navigateByUrl('/login')
       };
       if (error.status == 404) {

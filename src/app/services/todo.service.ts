@@ -18,7 +18,7 @@ export class TodoService {
 
   getTodosPagination(page:number, size:number) {
     const url = `${this.base_url}/todos/page/?page=${page}&size=${size}`;
-    return this.httpClient.get<TodoCustom[]>(url);
+    return this.httpClient.get<any>(url);
   }
 
   getAllTodosCustom() {
