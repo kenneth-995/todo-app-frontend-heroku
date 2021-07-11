@@ -50,7 +50,6 @@ export class ListComponent implements OnInit {
         this.errorMessage = "";
       },
       (error) => {
-        console.log(error)
         if (error["status"] == 404){
           this.todoCustom = [];
         } else if (error["status"] == 0){
@@ -91,7 +90,6 @@ export class ListComponent implements OnInit {
         this.errorMessage = "";
       },
       (error) => {
-        console.log(error)
         if (error["status"] == 404){
           this.todoCustom = [];
         } else if (error["status"] == 0){

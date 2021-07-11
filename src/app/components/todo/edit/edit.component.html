@@ -1,5 +1,6 @@
 <div class="container">
     <h2>{{titleTemplate}}</h2>
+    <div class="text-danger">{{errorMessage}}</div>
 
     <form [formGroup] = "todoForm" (submit)="saveForm()">
         <div class="form-group">

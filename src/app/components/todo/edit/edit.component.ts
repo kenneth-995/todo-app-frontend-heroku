@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
 
   private destroy$ = new Subject();
   public titleTemplate: string = '';
+  public errorMessage: string = '';
   public messageModalTemplate: string = '';
   private paramUrlId: number = 0;
 
@@ -111,12 +112,16 @@ export class EditComponent implements OnInit {
   private getUsers() {
     this.userService.getAllUsers().pipe(takeUntil(this.destroy$)).subscribe(
       (res: User[])=> this.users = res
+      , (error) => this.errorMessage = "Service not available, please try again"
     );
   }
 
   private getUser() {
     this.userService.getUserById(this.userIdLogged).pipe(takeUntil(this.destroy$)).subscribe(
       (res: User)=> this.users.push(res)
+
+      , (error) => this.errorMessage = "Service not available, please try again"
+      
     );
   }
 
@@ -130,12 +135,9 @@ export class EditComponent implements OnInit {
   public saveForm() {
     this.isSubmitted = true;
     if(this.todoForm.valid) {
-      if (this.isCreate) {
-        this.createTodo(this.todoForm.value);
-        
-      } else {
-        this.editTodo(this.todoForm.value);
-      }
+      if (this.isCreate) this.createTodo(this.todoForm.value);
+      
+      else this.editTodo(this.todoForm.value);
     }
   }
 
@@ -144,23 +146,24 @@ export class EditComponent implements OnInit {
       (res:TodoCustom)=> {
         this.todo = res;
         this.openModalCreatedEdited('Do you want to create another?');
+      },
+      (error) => {this.errorMessage = "Service not available, please try again";
       }
     );
   }
 
   private editTodo(todo:TodoCustom){
-    console.log(todo)
     this.todoService.editTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
       (res:TodoCustom)=> {
         this.todo = res;
         this.openModalCreatedEdited('Do you want to stay here?');
+        this.errorMessage = "";
       },
       (error) => {
-        console.log(error)
-        if (error["status"] == 403){
+        if (error["status"] == 401 || error["status"] == 403){
           this.router.navigateByUrl('/list');
         } else {
-          console.log(error)
+          this.errorMessage = "Service not available, please try again";
         }
       }
     );
@@ -172,7 +175,6 @@ export class EditComponent implements OnInit {
       r => {
         if (r === '0') this.router.navigateByUrl('/list');
         else { 
-          this.setFormTodo(new TodoCustom);
           this.isSubmitted = false;
         }
       }

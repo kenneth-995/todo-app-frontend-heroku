@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login() {
-    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       
       this.userService.login(this.loginForm.value).pipe(takeUntil(this.destroy$)
@@ -37,14 +36,12 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('accessToken', res['accessToken']);
           localStorage.setItem('username', res['username']);
           localStorage.setItem('id', res['id']);
-          console.log(res)
           this.router.navigateByUrl('/list');
           },
           (error) => {
-            console.log(error)
             if (error["status"] == 401){
               this.messageForm = "Invalid login or password";
-            } else if (error["status"] == 0){
+            } else {
               this.messageForm = "Service not available, please try again";
             }
           }
