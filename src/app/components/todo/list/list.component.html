@@ -34,7 +34,7 @@
     <div class="col border border-dark">{{todo.user.addressEntity.street}}</div>
     <div class="col border border-dark">{{todo.completed === true ? "Completed": "Not Completed"}}</div>
     <div class="col border border-dark" >
-      <button class="btn btn-warning m-1" [routerLink]="['/create-edit', todo.id]" [disabled]="userIdLogged != todo.user.id"> Edit </button>
+      <button class="btn btn-warning m-1" [routerLink]="['/todo/create-edit', todo.id]" [disabled]="userIdLogged != todo.user.id"> Edit </button>
       <button class="btn btn-danger m-1" (click)='openModalDelete(todo.id, i)' [disabled]="userIdLogged != todo.user.id">Delete</button>
     </div>
   </div>

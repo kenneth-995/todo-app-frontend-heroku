@@ -6,9 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AuthInterceptor } from 'src/app/core/interceptors/auth.interceptor'
-import { ListComponent } from './components/todo/list/list.component';
-import { HomeComponent } from './components/todo/home/home.component';
-import { EditCreateComponent } from './components/todo/edit-create/edit-create.component';
 import { HeaderComponent } from 'src/app/shared-module/header/header.component';
 import { LoginComponent } from './components/login/login.component'
 
@@ -16,9 +13,6 @@ import { LoginComponent } from './components/login/login.component'
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    HomeComponent,
-    EditCreateComponent,
     HeaderComponent,
     LoginComponent
   ],

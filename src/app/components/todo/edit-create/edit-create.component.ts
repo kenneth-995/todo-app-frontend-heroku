@@ -173,7 +173,7 @@ export class EditCreateComponent implements OnInit {
     this.messageModalTemplate = msg;
     this.modalService.open(this.modalCreatedEdited).result.then(
       r => {
-        if (r === '0') this.router.navigateByUrl('/list');
+        if (r === '0') this.router.navigateByUrl('todo/list');
         else { 
           this.isSubmitted = false;
         }

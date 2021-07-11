@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('accessToken', res['accessToken']);
           localStorage.setItem('username', res['username']);
           localStorage.setItem('id', res['id']);
-          this.router.navigateByUrl('/list');
+          this.router.navigateByUrl('todo/list');
           },
           (error) => {
             if (error["status"] == 401){
