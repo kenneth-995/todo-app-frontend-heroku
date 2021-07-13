@@ -21,17 +21,18 @@ export class ListComponent implements OnInit {
 
   public userIdLogged: number;
 
+  public formUserId : FormGroup;
+
   public todoCustom: TodoCustom[] = [];
   public todoCustomTemp: TodoCustom[] = [];
   
+  //TODO: MOVE IT TO A CLASS 'utils pagination'
+  private FIRST_PAGE: number = 0;
+  private SIZE_PAGE: number = 10;
   public numberPages: Array<number>;//Array to loop for in html template and show pagination
   public isPagination: boolean = false;
-  private firstPage: number = 0;
-  private lastPage: number = 0;
   public currentPage: number = 0;
-  private sizePage: number = 10;
-
-  public formUserId : FormGroup;
+  public linksPagination = {};
 
   constructor(private todoService: TodoService, 
     private userService: UserService,
@@ -41,6 +42,74 @@ export class ListComponent implements OnInit {
     this.userIdLogged= this.userService.getUserIdLogged;
     this.getAllTodosList();
     this.inicializeFormUserId();
+  }
+
+
+  // param = 'next' || 'prev' || 'first' || 'last'
+  public getPageByLink(param: string) {
+
+    //change the parameter for the useful url
+    if (param === 'first') {
+      param = this.linksPagination['first']
+      this.currentPage = this.FIRST_PAGE;
+
+    } else if (param === 'prev') {
+      param = this.linksPagination['prev']
+      this.currentPage -= 1;
+
+    } else if (param === 'next') {
+      param = this.linksPagination['next']
+      this.currentPage += 1;
+
+    } else if (param === 'last') {
+      param = this.linksPagination['last']
+      this.currentPage = this.numberPages.length-1;
+    
+    } else { /* DO NOTHING */ } 
+
+    this.getPageByUrl(param);
+
+  }
+
+  // navigate directly to a specific page
+  public getOnePage(page:number) {
+    this.currentPage = page;
+    let url = `${this.todoService.base_url}/todos/page/?page=${page}&size=${this.SIZE_PAGE}`;
+    this.getPageByUrl(url);
+  }
+
+  public getPageByUrl(url: string) {
+    this.todoService.getTodosPaginationByUrl(url).pipe(takeUntil(this.destroy$)).subscribe(
+      res => {
+        this.todoCustom = res.body['content'] as TodoCustom[];
+        this.numberPages = new Array<number>(res.body['totalPages'] as number);
+        let rawLinks = res['headers'].get('link') as string;
+        this.setLinksFromHeader(rawLinks);
+      },
+      (error) => {
+        if (error["status"] == 404){
+          this.todoCustom = [];
+        } else if (error["status"] == 0){
+          this.errorMessage = "Service not available, please try again";
+        } else {
+          this.errorMessage = "Something went wrong, try again or contact the administrator";
+        } 
+      }
+    );
+
+  }
+  
+  private setLinksFromHeader(rawLinks: string) {
+    if (rawLinks.length > 0) {
+      this.linksPagination = {};
+      let parts = rawLinks.split(',');
+      parts.forEach(p => {
+        let section = p.split(';');
+        let url = section[0].replace(/<(.*)>/, '$1').trim();
+        let name = section[1].replace(/rel="(.*)"/, '$1').trim();
+        this.linksPagination[name] = url;
+      });
+    }
   }
 
   private getAllTodosList() {
@@ -79,44 +148,13 @@ export class ListComponent implements OnInit {
     );
   }
 
-  private getTodosPage(page:number, size:number = 10) {
-    
-    this.todoService.getTodosPagination(page, size).pipe(takeUntil(this.destroy$)).subscribe(
-      (res:any)=> {
-        this.currentPage= page;
-        this.todoCustom = res['content'] as TodoCustom[];
-        this.lastPage= res['totalPages']-1 as number;
-        this.numberPages = new Array<number>(res['totalPages'] as number);//Array to be able to do for loop in html template   
-        this.errorMessage = "";
-      },
-      (error) => {
-        if (error["status"] == 404){
-          this.todoCustom = [];
-        } else if (error["status"] == 0){
-          this.errorMessage = "Service not available, please try again";
-        } else {
-          this.errorMessage = "Something went wrong, try again or contact the administrator";
-        } 
-      }
-    );
-  }
-
   public showPaginationAndGetFirstPage() {
     if ( !this.isPagination ) {
       this.formUserId.controls['id'].setValue(null);
-      this.getFirstPage();
-    } 
-    else this.getAllTodosList();
-  }
-
-  public getFirstPage() {
-    this.currentPage =this.firstPage; 
-    this.getTodosPage(this.firstPage, this.sizePage);
-  }
-
-  public getLastPage() {
-    this.currentPage =this.lastPage;
-    this.getTodosPage(this.lastPage, this.sizePage);
+      this.getOnePage(this.FIRST_PAGE);
+    } else {
+      this.getAllTodosList();
+    }
   }
 
   public openModalDelete(id: number, idx: number) {
@@ -135,9 +173,9 @@ export class ListComponent implements OnInit {
       },
       (error) => {
         if (error["status"] == 401){
-          this.errorMessage = "You can't delete all from other users";
+          this.errorMessage = "You can't delete TODO from other users";
         } else if (error["status"] == 403){ // It shouldn't happen unless the user modifies the dom
-          this.errorMessage = "You can't delete all from other users";
+          this.errorMessage = "You can't delete TODO from other users";
         } else {
           this.errorMessage = "Service not available, please try again";
         }
@@ -158,6 +196,7 @@ export class ListComponent implements OnInit {
         const isGoodId =  Number(id) && Number(id) > 0;
         if (isGoodId) {
           this.isPagination = false;
+          //this.links = {};
           this.getTodosByUserId(id);
         } else {
           this.getAllTodosList();

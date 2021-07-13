@@ -31,6 +31,10 @@ export class TodoService {
     return this.httpClient.get<TodoCustom[]>(url);
   }
 
+  getTodosPaginationByUrl(url: string){
+    return this.httpClient.get(url,{ observe: 'response'});
+  }
+
   getTodoById(id:number) {
     const url = `${this.base_url}/todos/${id}/`;
     return this.httpClient.get<TodoCustom>(url);

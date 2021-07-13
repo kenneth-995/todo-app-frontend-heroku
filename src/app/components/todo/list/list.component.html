@@ -28,12 +28,12 @@
   </div>
 
   <div class="row border border-dark" *ngFor='let todo of todoCustom let i = index'>
-    <div class="col border border-dark">{{todo.title}}</div>
-    <div class="col border border-dark">{{todo.user.username}}</div>
-    <div class="col border border-dark">{{todo.user.addressEntity.city}}</div>
-    <div class="col border border-dark">{{todo.user.addressEntity.street}}</div>
-    <div class="col border border-dark">{{todo.completed === true ? "Completed": "Not Completed"}}</div>
-    <div class="col border border-dark" >
+    <div class="col-2 border border-dark">{{todo.title}}</div>
+    <div class="col-2 border border-dark">{{todo.user.username}}</div>
+    <div class="col-2 border border-dark">{{todo.user.addressEntity.city}}</div>
+    <div class="col-2 border border-dark">{{todo.user.addressEntity.street}}</div>
+    <div class="col-2 border border-dark">{{todo.completed === true ? "Completed": "Not Completed"}}</div>
+    <div class="col-2 border border-dark" >
       <button class="btn btn-warning m-1" [routerLink]="['/todo/create-edit', todo.id]" [disabled]="userIdLogged != todo.user.id"> Edit </button>
       <button class="btn btn-danger m-1" (click)='openModalDelete(todo.id, i)' [disabled]="userIdLogged != todo.user.id">Delete</button>
     </div>
@@ -41,14 +41,23 @@
 
   <nav class="mt-2 " aria-label="Page navigation" *ngIf="isPagination">
     <ul class="pagination justify-content-center">
-      <li class="page-item" (click)="getFirstPage()">
-        <a class="page-link">&lt;&lt;</a>
+      
+      <li class="page-item" *ngIf="linksPagination['first']" (click)="getPageByLink('first')"> 
+        <a class="page-link"> &lt;&lt; </a>
       </li>
-      <li class="page-item" *ngFor='let page of numberPages let i = index' (click)="getTodosPage(i)">
+      <li class="page-item" *ngIf="linksPagination['prev']" (click)="getPageByLink('prev')"> 
+        <a class="page-link"> &lt; </a>
+      </li>
+
+      <li class="page-item" *ngFor='let page of numberPages let i = index' (click)="getOnePage(i)">
         <a class="page-link" [ngClass]="{ 'textUnderline': currentPage === i  }"> {{i+1}} </a>
       </li>
-      <li class="page-item" (click)="getLastPage()">
-        <a class="page-link">&gt;&gt;</a>
+
+      <li class="page-item" *ngIf="linksPagination['next']" (click)="getPageByLink('next')" > 
+        <a class="page-link"> &gt; </a>
+      </li>
+      <li class="page-item" *ngIf="linksPagination['last']" (click)="getPageByLink('last')"> 
+        <a class="page-link"> &gt;&gt; </a>
       </li>
     </ul>
   </nav>
