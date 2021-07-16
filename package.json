@@ -1,12 +1,14 @@
 {
   "name": "ohmycodetodofront",
   "version": "0.0.0",
+  "description": "Angular application that manages task lists",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc": "npx compodoc -p tsconfig.base.json"
   },
   "private": true,
   "dependencies": {

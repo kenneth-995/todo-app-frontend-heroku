@@ -1,0 +1,1849 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ohmycodetodofront documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ohmycodetodofront documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  EditCreateComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/todo/edit-create/edit-create.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-edit</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./edit-create.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./edit-create.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isCreate" >isCreate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isSubmitted" >isSubmitted</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#messageModalTemplate" >messageModalTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#modalCreatedEdited" >modalCreatedEdited</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#paramUrlId" >paramUrlId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#titleTemplate" >titleTemplate</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#todo" >todo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#todoForm" >todoForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userIdLogged" >userIdLogged</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#users" >users</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createTodo" >createTodo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#editTodo" >editTodo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getParamUrl" >getParamUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getTodo" >getTodo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getUser" >getUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getUsers" >getUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#inicializeForm" >inicializeForm</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onChangeSelectUser" >onChangeSelectUser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#openModalCreatedEdited" >openModalCreatedEdited</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#saveForm" >saveForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#setFormTodo" >setFormTodo</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#registerFormControl" >registerFormControl</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(activateRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, modalService: NgbModal, todoService: <a href="../injectables/TodoService.html" target="_self">TodoService</a>, userService: <a href="../injectables/UserService.html" target="_self">UserService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>activateRoute</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>modalService</td>
+                                                  
+                                                        <td>
+                                                                    <code>NgbModal</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>todoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TodoService.html" target="_self" >TodoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>createTodo</b></span>
+                        <a href="#createTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createTodo(todo: <a href="../classes/TodoCustom.html" target="_self">TodoCustom</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:144</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>todo</td>
+                                    <td>
+                                                <code><a href="../classes/TodoCustom.html" target="_self" >TodoCustom</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>editTodo</b></span>
+                        <a href="#editTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>editTodo(todo: <a href="../classes/TodoCustom.html" target="_self">TodoCustom</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:155</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>todo</td>
+                                    <td>
+                                                <code><a href="../classes/TodoCustom.html" target="_self" >TodoCustom</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getParamUrl"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getParamUrl</b></span>
+                        <a href="#getParamUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getParamUrl()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getTodo</b></span>
+                        <a href="#getTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getTodo(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:99</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>id</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUser"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getUser</b></span>
+                        <a href="#getUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUsers"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getUsers</b></span>
+                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUsers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializeForm"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>inicializeForm</b></span>
+                        <a href="#inicializeForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>inicializeForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:192</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onChangeSelectUser"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>onChangeSelectUser</b></span>
+                        <a href="#onChangeSelectUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onChangeSelectUser(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:184</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModalCreatedEdited"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>openModalCreatedEdited</b></span>
+                        <a href="#openModalCreatedEdited"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>openModalCreatedEdited(msg: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:172</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>msg</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveForm"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>saveForm</b></span>
+                        <a href="#saveForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>saveForm()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:135</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setFormTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>setFormTodo</b></span>
+                        <a href="#setFormTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setFormTodo(todo: <a href="../classes/TodoCustom.html" target="_self">TodoCustom</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>todo</td>
+                                    <td>
+                                                <code><a href="../classes/TodoCustom.html" target="_self" >TodoCustom</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCreate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isCreate</b></span>
+                        <a href="#isCreate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSubmitted"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>isSubmitted</b></span>
+                        <a href="#isSubmitted"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="messageModalTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>messageModalTemplate</b></span>
+                        <a href="#messageModalTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalCreatedEdited"></a>
+                    <span class="name">
+                        <span ><b>modalCreatedEdited</b></span>
+                        <a href="#modalCreatedEdited"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;modalCreatedEdited&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paramUrlId"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>paramUrlId</b></span>
+                        <a href="#paramUrlId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="titleTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>titleTemplate</b></span>
+                        <a href="#titleTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="todo"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>todo</b></span>
+                        <a href="#todo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/TodoCustom.html" target="_self" >TodoCustom</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new TodoCustom</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="todoForm"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>todoForm</b></span>
+                        <a href="#todoForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({})</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userIdLogged"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>userIdLogged</b></span>
+                        <a href="#userIdLogged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="users"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>users</b></span>
+                        <a href="#users"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/User.html" target="_self" >User[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="registerFormControl"></a>
+                        <span class="name"><b>registerFormControl</b><a href="#registerFormControl"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>registerFormControl()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">src/app/components/todo/edit-create/edit-create.component.ts:188</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild, TemplateRef } from &#x27;@angular/core&#x27;;
+import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Subject } from &#x27;rxjs&#x27;;
+import { takeUntil } from &#x27;rxjs/operators&#x27;;
+import { FormGroup, FormControl, Validators } from &#x27;@angular/forms&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { TodoService } from &#x27;src/app/services/todo.service&#x27;;
+import { UserService } from &#x27;src/app/services/user.service&#x27;;
+import { TodoCustom } from &#x27;src/app/models/TodoCustom&#x27;;
+import { User } from &#x27;src/app/models/User&#x27;;
+
+@Component({
+  selector: &#x27;app-edit&#x27;,
+  templateUrl: &#x27;./edit-create.component.html&#x27;,
+  styleUrls: [&#x27;./edit-create.component.css&#x27;]
+})
+export class EditCreateComponent implements OnInit {
+  @ViewChild(&quot;modalCreatedEdited&quot;, { static: false }) modalCreatedEdited: TemplateRef&lt;any&gt;;
+
+  private destroy$ &#x3D; new Subject();
+  public titleTemplate: string &#x3D; &#x27;&#x27;;
+  public errorMessage: string &#x3D; &#x27;&#x27;;
+  public messageModalTemplate: string &#x3D; &#x27;&#x27;;
+  private paramUrlId: number &#x3D; 0;
+
+  private todo: TodoCustom &#x3D; new TodoCustom;
+  public isSubmitted: boolean &#x3D; false;
+  public isCreate: boolean &#x3D; false;
+
+  public todoForm: FormGroup &#x3D; new FormGroup({});
+
+  public userIdLogged: number &#x3D; 0;
+  public users: User[] &#x3D; [];
+
+  constructor(private activateRoute: ActivatedRoute,
+    private router: Router,
+    private modalService: NgbModal,
+    private todoService: TodoService,
+    private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userIdLogged&#x3D; this.userService.getUserIdLogged;
+    this.getParamUrl();
+    this.inicializeForm();
+  }
+
+  private getParamUrl() {
+    this.activateRoute.paramMap.subscribe( param &#x3D;&gt; {
+          
+      this.paramUrlId &#x3D; Number(param.get(&#x27;id&#x27;));
+
+      if (this.paramUrlId &gt; 0) {
+        this.getUser();
+        this.getTodo(this.paramUrlId);
+        this.titleTemplate &#x3D; &quot;Edit TODO&quot;
+
+      } else if (this.paramUrlId &#x3D;&#x3D;&#x3D; 0) {
+        this.getUsers();
+        this.titleTemplate &#x3D; &quot;Create TODO&quot;
+        this.isCreate&#x3D; true;
+
+      } else this.router.navigateByUrl(&#x27;/list&#x27;);
+            
+    });
+  }
+
+  private inicializeForm() {
+    this.todoForm &#x3D; new FormGroup({
+      id: new FormControl(
+        this.todo.id, 
+        [
+          Validators.required,
+          Validators.pattern(&quot;^[0-9]*$&quot;),
+          Validators.minLength(1),
+        ]
+      ),
+      userId: new FormControl(
+        this.todo.user.id, 
+        [
+          Validators.required,
+          Validators.pattern(&quot;^[0-9]*$&quot;),
+        ]
+      ),
+      title: new FormControl(
+        this.todo.title, 
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(199),
+        ]),
+      completed: new FormControl(
+        this.todo.completed, 
+        [
+          Validators.required
+        ]),
+    });
+  }
+
+  private getTodo(id:number) {
+    this.todoService.getTodoById(id).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)&#x3D;&gt; {
+        this.todo &#x3D; res;
+        if (this.userService.checkHasPermissionModidy(this.todo.user.id, this.userIdLogged)) {
+          this.setFormTodo(this.todo);
+        } else this.router.navigateByUrl(&#x27;/list&#x27;) // FORBIDDEN
+        
+      }, 
+      (error) &#x3D;&gt; this.router.navigateByUrl(&#x27;/list&#x27;)
+    );
+  }
+
+  private getUsers() {
+    this.userService.getAllUsers().pipe(takeUntil(this.destroy$)).subscribe(
+      (res: User[])&#x3D;&gt; this.users &#x3D; res
+      , (error) &#x3D;&gt; this.errorMessage &#x3D; &quot;Service not available, please try again&quot;
+    );
+  }
+
+  private getUser() {
+    this.userService.getUserById(this.userIdLogged).pipe(takeUntil(this.destroy$)).subscribe(
+      (res: User)&#x3D;&gt; this.users.push(res)
+
+      , (error) &#x3D;&gt; this.errorMessage &#x3D; &quot;Service not available, please try again&quot;
+      
+    );
+  }
+
+  private setFormTodo(todo:TodoCustom) {
+    this.todoForm.controls[&#x27;id&#x27;].setValue(todo.id);
+    this.todoForm.controls[&#x27;userId&#x27;].setValue(todo.user.id);
+    this.todoForm.controls[&#x27;title&#x27;].setValue(todo.title);
+    this.todoForm.controls[&#x27;completed&#x27;].setValue(todo.completed);
+  }
+
+  public saveForm() {
+    this.isSubmitted &#x3D; true;
+    if(this.todoForm.valid) {
+      if (this.isCreate) this.createTodo(this.todoForm.value);
+      
+      else this.editTodo(this.todoForm.value);
+    }
+  }
+
+  private createTodo(todo:TodoCustom) {
+    this.todoService.createTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)&#x3D;&gt; {
+        this.todo &#x3D; res;
+        this.openModalCreatedEdited(&#x27;Do you want to create another?&#x27;);
+      },
+      (error) &#x3D;&gt; {this.errorMessage &#x3D; &quot;Service not available, please try again&quot;;
+      }
+    );
+  }
+
+  private editTodo(todo:TodoCustom){
+    this.todoService.editTodo(todo).pipe(takeUntil(this.destroy$)).subscribe(
+      (res:TodoCustom)&#x3D;&gt; {
+        this.todo &#x3D; res;
+        this.openModalCreatedEdited(&#x27;Do you want to stay here?&#x27;);
+        this.errorMessage &#x3D; &quot;&quot;;
+      },
+      (error) &#x3D;&gt; {
+        if (error[&quot;status&quot;] &#x3D;&#x3D; 401 || error[&quot;status&quot;] &#x3D;&#x3D; 403){
+          this.router.navigateByUrl(&#x27;/list&#x27;);
+        } else {
+          this.errorMessage &#x3D; &quot;Service not available, please try again&quot;;
+        }
+      }
+    );
+  }
+
+  public openModalCreatedEdited(msg: string) {
+    this.messageModalTemplate &#x3D; msg;
+    this.modalService.open(this.modalCreatedEdited).result.then(
+      r &#x3D;&gt; {
+        if (r &#x3D;&#x3D;&#x3D; &#x27;0&#x27;) this.router.navigateByUrl(&#x27;todo/list&#x27;);
+        else { 
+          this.isSubmitted &#x3D; false;
+        }
+      }
+    );
+  }
+
+  public onChangeSelectUser(value:any){
+    this.todoForm.controls[&#x27;userId&#x27;].setValue(value);
+  }
+
+  get registerFormControl() {
+    return this.todoForm.controls;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+  
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;h2&gt;{{titleTemplate}}&lt;/h2&gt;
+    &lt;div class&#x3D;&quot;text-danger&quot;&gt;{{errorMessage}}&lt;/div&gt;
+
+    &lt;form [formGroup] &#x3D; &quot;todoForm&quot; (submit)&#x3D;&quot;saveForm()&quot;&gt;
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;label for&#x3D;&quot;userId&quot;&gt;User Id *&lt;/label&gt;
+          &lt;select class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;userId&quot; (change)&#x3D;&quot;onChangeSelectUser($event.target.value)&quot;&gt;
+            &lt;option [value]&#x3D;&quot;&quot; disabled&gt;Select User&lt;/option&gt;
+            &lt;option *ngFor&#x3D;&quot;let user of users&quot; value&#x3D;&quot;{{user.id}}&quot;&gt;{{user.id}} {{user.name}} ({{user.addressEntity.city}})&lt;/option&gt;
+          &lt;/select&gt;
+            &lt;small id&#x3D;&quot;userId&quot; class&#x3D;&quot;form-text text-muted&quot;&gt;User ID assigned to TODO&lt;/small&gt;
+            &lt;span class&#x3D;&quot;text-danger&quot;
+                *ngIf&#x3D;&quot;(registerFormControl.id.touched || isSubmitted) &amp;&amp; registerFormControl.id.errors?.required&quot;&gt;
+                User ID is required
+            &lt;/span&gt;
+        &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;title&quot;&gt;Title *&lt;/label&gt;
+            &lt;input class&#x3D;&quot;form-control&quot; type&#x3D;&quot;text&quot;  id&#x3D;&quot;title&quot; aria-describedby&#x3D;&quot;title&quot; placeholder&#x3D;&quot;Some title&quot; formControlName&#x3D;&quot;title&quot;&gt;
+            &lt;small class&#x3D;&quot;form-text text-muted&quot; id&#x3D;&quot;userId&quot; &gt;Title of TODO length&lt;200 characters&lt;/small&gt;
+            &lt;span class&#x3D;&quot;text-danger&quot;
+                *ngIf&#x3D;&quot;(registerFormControl.title.touched || isSubmitted) &amp;&amp; registerFormControl.title.errors?.required&quot;&gt;
+                Title is required
+            &lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-group&quot;&gt;
+            &lt;label for&#x3D;&quot;isCompleted&quot;&gt;Completed *&lt;/label&gt;
+            &lt;select class&#x3D;&quot;form-select&quot;  id&#x3D;&quot;isCompleted&quot; aria-describedby&#x3D;&quot;isCompleted&quot; formControlName&#x3D;&quot;completed&quot;&gt;
+                &lt;option selected value&#x3D;&quot;false&quot;&gt;Not completed&lt;/option&gt;
+                &lt;option value&#x3D;&quot;true&quot;&gt;Completed&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;small class&#x3D;&quot;form-text text-muted&quot; id&#x3D;&quot;userId&quot; &gt;Select if it is to be done or is finished&lt;/small&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;my-3&quot;&gt;
+            &lt;button class&#x3D;&quot;btn btn-primary&quot; type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;!todoForm.valid&quot;&gt;Submit&lt;/button&gt;
+          &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;ng-template #modalCreatedEdited let-modal&gt;
+  &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+      &lt;h5 class&#x3D;&quot;modal-title&quot;&gt;{{titleTemplate}} successfully&lt;/h5&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+      {{messageModalTemplate}}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-danger&quot; (click)&#x3D;&quot;modal.close(&#x27;1&#x27;)&quot;&gt;Yes&lt;/button&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; data-dismiss&#x3D;&quot;modal&quot; (click)&#x3D;&quot;modal.close(&#x27;0&#x27;)&quot;&gt;No, go to list&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./edit-create.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container">    <h2>{{titleTemplate}}</h2>    <div class="text-danger">{{errorMessage}}</div>    <form [formGroup] = "todoForm" (submit)="saveForm()">        <div class="form-group">          <label for="userId">User Id *</label>          <select class="form-control" formControlName="userId" (change)="onChangeSelectUser($event.target.value)">            <option [value]="" disabled>Select User</option>            <option *ngFor="let user of users" value="{{user.id}}">{{user.id}} {{user.name}} ({{user.addressEntity.city}})</option>          </select>            <small id="userId" class="form-text text-muted">User ID assigned to TODO</small>            <span class="text-danger"                *ngIf="(registerFormControl.id.touched || isSubmitted) && registerFormControl.id.errors?.required">                User ID is required            </span>        </div>          <div class="form-group">            <label for="title">Title *</label>            <input class="form-control" type="text"  id="title" aria-describedby="title" placeholder="Some title" formControlName="title">            <small class="form-text text-muted" id="userId" >Title of TODO length<200 characters</small>            <span class="text-danger"                *ngIf="(registerFormControl.title.touched || isSubmitted) && registerFormControl.title.errors?.required">                Title is required            </span>          </div>          <div class="form-group">            <label for="isCompleted">Completed *</label>            <select class="form-select"  id="isCompleted" aria-describedby="isCompleted" formControlName="completed">                <option selected value="false">Not completed</option>                <option value="true">Completed</option>            </select>            <small class="form-text text-muted" id="userId" >Select if it is to be done or is finished</small>          </div>          <div class="my-3">            <button class="btn btn-primary" type="submit" [disabled]="!todoForm.valid">Submit</button>          </div>    </form></div><ng-template #modalCreatedEdited let-modal>  <div class="modal-content">    <div class="modal-header">      <h5 class="modal-title">{{titleTemplate}} successfully</h5>    </div>    <div class="modal-body">      {{messageModalTemplate}}    </div>    <div class="modal-footer">      <button type="button" class="btn btn-danger" (click)="modal.close(\'1\')">Yes</button>      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close(\'0\')">No, go to list</button>    </div>  </div></ng-template></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EditCreateComponent', 'selector': 'app-edit'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'ListComponent', 'selector': 'app-list'},{'name': 'LoginComponent', 'selector': 'app-login'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'EditCreateComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditCreateComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       
+       <script type="module" src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
