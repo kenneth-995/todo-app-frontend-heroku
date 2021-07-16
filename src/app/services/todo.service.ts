@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { TodoCustom } from 'src/app/models/TodoCustom';
 
@@ -12,8 +12,12 @@ export class TodoService {
   constructor(private httpClient: HttpClient) { }
 
   getAllTodos() {
-    const url = `${this.base_url}/todos/`;
-    return this.httpClient.get<TodoCustom[]>(url);
+    const url = `${this.base_url}todos`;
+    const headers = new HttpHeaders()
+    .append('Access-Control-Allow-Origin', '')
+    .append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    .append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+    return this.httpClient.get<TodoCustom[]>(url, {headers});
   }
 
   getTodosPagination(page:number, size:number) {
