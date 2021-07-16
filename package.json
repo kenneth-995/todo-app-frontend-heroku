@@ -4,10 +4,13 @@
   "description": "Angular application that manages task lists",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start:prod": "node server.js",
+    "start": "node server.js",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "postinstall": "ng build --prod",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "compodoc": "npx compodoc -p tsconfig.base.json"
   },
   "private": true,
@@ -15,6 +18,7 @@
     "@angular/animations": "~12.0.0",
     "@angular/common": "~12.0.0",
     "@angular/compiler": "~12.0.0",
+    "@angular/cli": "~12.0.0",
     "@angular/core": "~12.0.0",
     "@angular/forms": "~12.0.0",
     "@angular/platform-browser": "~12.0.0",
@@ -40,6 +44,6 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "~4.2.3"
+    "typescript": "4.0.3"
   }
 }
