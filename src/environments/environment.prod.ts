@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  BASE_URL: 'https://jsonplaceholder.typicode.com',
+  CUSTOM_API_BASE_URL: 'https://backend-todo-ohmycode.herokuapp.com/',
 };

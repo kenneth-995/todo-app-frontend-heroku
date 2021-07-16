@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  CUSTOM_API_BASE_URL: 'https://backend-todo-ohmycode.herokuapp.com',/* http://localhost:8080/api */
-  //REMOTE_API_BASE_URL: 'https://backend-todo-ohmycode.herokuapp.com/',
+  CUSTOM_API_BASE_URL: 'http://localhost:8080/api',
+  //MOOK_API_BASE_URL: 'https://backend-todo-ohmycode.herokuapp.com/',
 };
 
 /*
